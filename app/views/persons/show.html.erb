@@ -1,0 +1,100 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Prefix name:</strong>
+  <%= @person.prefix_name %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @person.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @person.last_name %>
+</p>
+
+<p>
+  <strong>Suffix name:</strong>
+  <%= @person.suffix_name %>
+</p>
+
+<p>
+  <strong>Address1 name:</strong>
+  <%= @person.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @person.address2 %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @person.state%>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @person.city %>
+</p>
+
+<p>
+  <strong>Zip1:</strong>
+  <%= @person.zip1 %>
+</p>
+
+<p>
+  <strong>Zip2:</strong>
+  <%= @person.zip2 %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @person.gender %>
+</p>
+
+<p>
+  <strong>Unsubscribe:</strong>
+  <%= @person.unsubscribe %>
+</p>
+
+<% @person.person_phones.each do |ph|%>
+  <p>
+  <strong>Person Phone</strong>
+  <%= ph.try(:phone) %>
+  </p>
+
+  <p>
+    <strong>Person Phone Type:</strong>
+    <%= ph.try(:phone_type) %>
+  </p>
+<% end %>
+
+<% @person.person_emails.each do |em|%>
+  <p>
+  <strong>Person Email</strong>
+  <%= em.try(:email) %>
+  </p>
+
+  <p>
+    <strong>Person Email Type:</strong>
+    <%= em.try(:email_type) %>
+  </p>
+<% end %>
+
+<% @person.person_tags.each do |tg|%>
+  <p>
+  <strong>Person Tag</strong>
+  <%= tg.try(:tag_name) %>
+  </p>
+
+  <p>
+    <strong>Person Tag Type:</strong>
+    <%= tg.try(:tag_type) %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', persons_path %>

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_import_path(@import) %> |
+<%= link_to 'Back', imports_path %>
+<div class="field">
+  User :
+  <%= @import.try(:user).try(:first_name)%>
+</div>
+<div class = "field">
+  File :<%= @import.upload_file_name %>
+</div>
+<div class="field">
+  Status: <%= @import.status %>
+</div>
+<div class="field">
+ Number of Success: <%= @import.number_of_success %>
+</div>
+<div class="field">
+  Number of Failed: <%= @import.number_of_failed %>
+</div>
+<div class="field">
+  Total Records: <%= @import.total_record %>
+</div>
+<div class="field">
+  Update Date: <%= @import.updated_at.strftime('%F') %>
+</div>

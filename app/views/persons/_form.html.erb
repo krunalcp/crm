@@ -1,0 +1,110 @@
+<%= form_for(person) do |f| %>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :prefix_name %>
+    <%= f.text_field :prefix_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :middle_name %>
+    <%= f.text_field :middle_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :suffix_name %>
+    <%= f.text_field :suffix_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address1 %>
+    <%= f.text_area :address1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address2 %>
+    <%= f.text_field :address2 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state%>
+    <%= f.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= f.label :zip1 %>
+    <%= f.text_field :zip1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :zip2 %>
+    <%= f.text_field :zip2 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %>
+    <%= f.radio_button :gender,'M', checked: true %>Male
+    <%= f.radio_button :gender,'F' %>Female
+  </div>
+
+  <div class="field">
+    <%= f.label :unsubscribe %>
+    <%= f.text_field :unsubscribe %>
+  </div>
+  
+   <div >
+     <%= f.fields_for :person_phones do |ph| %>
+      <%= render 'shared/person_phone_fields', f: ph%>
+     <% end %>
+      <%= link_to_add_association 'Add Person Phone', f, :person_phones, partial: "shared/person_phone_fields" %>
+    </div>
+
+    <div >
+       <%= f.fields_for :person_emails do |pe| %>
+        <%= render 'shared/person_email_fields', f: pe%>
+       <% end %>
+      <%= link_to_add_association 'Add Person Email', f, :person_emails, partial: "shared/person_email_fields" %>
+    </div>
+
+    <div >
+       <%= f.fields_for :person_tags do |pt| %>
+        <%= render 'shared/person_tag_fields', f: pt %>
+       <% end %>
+      <%= link_to_add_association 'Add Person Tag', f, :person_tags, partial: "shared/person_tag_fields" %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+<% end %>
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".add_ass").
+  data("association-insertion-method", 'after').
+  data("association-insertion-node", 'this'); 
+});
+</script>

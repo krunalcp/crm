@@ -1,0 +1,10 @@
+
+<% if user_signed_in? %>
+  <h3> Dashboard</h3>
+  <%= link_to 'import', new_import_path %> | 
+  <%= link_to 'person', persons_path %> | 
+  <br/>
+  <br/>
+  <br/>
+  <%= link_to 'import file',new_import_path %>
+<% end %>
